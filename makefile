@@ -11,11 +11,16 @@ objects := $(patsubst %.cpp, $(obj)%.o, $(sources))
 run : build
 	$(bin)program.exe
 
-build : $(objects)
+build : $(objects) $(bin)
 	$(compiler) $(objects) -o $(bin)program.exe
 
-$(objects) : $(obj)%.o : %.cpp $(headers)
+$(objects) : $(obj)%.o : %.cpp $(headers) $(obj)
 	$(compiler) -c $< -o $@
 
-clean :
+$(obj) :
+	mkdir $(obj)
+$(bin) :
+	mkdir $(bin)
+
+clean : 
 	rm $(obj)*.o $(bin)*.exe
