@@ -1,2 +1,2 @@
-./bin/*.exe
-./obj/*.o
+bin/*.exe
+obj/*.o
